@@ -44,9 +44,10 @@ class Cat extends CanRun {
 
 void testIt() {
   const Dog bella = Dog("Bella");
-  const Cat julia = Cat("julia");
   bella.run();
   bella.type.log();
+
+  const Cat julia = Cat("julia");
   julia.run();
   julia.type.log();
 }
