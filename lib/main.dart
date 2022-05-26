@@ -6,7 +6,10 @@ extension Log on Object {
 }
 
 abstract class CanRun {
-  void run();
+  @mustCallSuper
+  void run() {
+    "CanRun's run function is called".log();
+  }
 }
 
 class Dog extends CanRun {
@@ -16,6 +19,7 @@ class Dog extends CanRun {
 
   @override
   void run() {
+    super.run();
     "$name can run".log();
   }
 }
