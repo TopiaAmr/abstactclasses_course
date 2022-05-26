@@ -1,4 +1,24 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
+
+abstract class CanRun {
+  void run();
+}
+
+class Dog extends CanRun {
+  final String name;
+
+  Dog(this.name);
+
+  @override
+  void run() {
+    "$name can run".log();
+  }
+}
 
 void main() {
   runApp(const App());
@@ -6,12 +26,18 @@ void main() {
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final Dog bella = Dog("Bella");
+    bella.run();
+    return MaterialApp(
       debugShowMaterialGrid: false,
-      home: Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Text(bella.name),
+        ),
+      ),
     );
   }
 }
